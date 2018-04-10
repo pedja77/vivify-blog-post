@@ -23,3 +23,8 @@ Route::get('/posts', 'PostsController@index')->name('all-posts');
 Route::get('/posts/{id}', 'PostsController@show')->name('single-post');
 
 
+Route::get('/post/create', ['as'=> 'create-post', 'uses'=> 'PostsController@create']);
+
+Route::post('/posts', 'PostsController@store');
+
+

@@ -27,4 +27,6 @@ Route::get('/post/create', ['as'=> 'create-post', 'uses'=> 'PostsController@crea
 
 Route::post('/posts', 'PostsController@store');
 
+Route::post('/comment/create', 'CommentsController@store')->name('add-comment');
+
 

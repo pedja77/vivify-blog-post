@@ -29,4 +29,14 @@ Route::post('/posts', 'PostsController@store');
 
 Route::post('/comment/create', 'CommentsController@store')->name('add-comment');
 
+//Route::post('/posts/{post_id}/comments', ['as'=> 'comments-post', 'uses'=> 'CommentsController@store']);
 
+Route::get('/register', 'RegisterController@create');
+
+Route::post('/register', 'RegisterController@store');
+
+Route::get('/logout', 'LoginController@logout');
+
+Route::get('/login', 'LoginController@create')->name('login');
+
+Route::post('/login', 'LoginController@store');

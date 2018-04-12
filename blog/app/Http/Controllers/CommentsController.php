@@ -41,8 +41,26 @@ class CommentsController extends Controller
         $comment->post_id = $request->id;
         $comment->save();
 
+        $this->validate($request, [
+            'text' => 'required|min:15'
+        ]);
+
         return redirect()->route('single-post', ['id'=> $request->id]);
     }
+
+
+    // Radjeno na casu
+    // public function store($postId) {
+    //     $post = Post::find($postId);
+
+    //     $this->validate(request(), [
+    //         'text' => 'reqiured|min:15'
+    //     ]);
+
+    //     $post->comments()->create(request()->all());
+
+    //     return redirect()->back();
+    // }
 
     /**
      * Display the specified resource.

@@ -7,8 +7,14 @@ use \App\Post;
 
 class PostsController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth', ['only'=> ['create', 'store']]);
+    }
+
+
     public function index()
     {
+        //dd(auth()->user);
         // Prikaz svih elemenata resursa
         $posts = Post::getPublished();
 
@@ -41,8 +47,14 @@ class PostsController extends Controller
             'body' => 'required|min:15'
         ]);
 
-        Post::create(request()->all());
+        //Post::create(request()->all());
 
+        $post = new Post();
+        $post->title = request('title');
+        $post->body = request('body');
+        $post->user_id = auth()->user()->id;
+        $post->is_published = request('is_published');
+        $post->save();
         return redirect()->route('all-posts');
 
     }

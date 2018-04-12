@@ -8,6 +8,13 @@
         <div class="blog-header">
             <div class="container">
                 <h1 class="blog-title">Laravel blog</h1>
+                @if(auth()->check())
+                    <div>{{  auth()->user()->name }}</div>
+                    <a href="/logout">Logout</a>
+                @else
+                    <a href="/login">Login</a>
+                    <a href="/register">Register</a>
+                @endif
             </div>
         </div>
         <div class="container">

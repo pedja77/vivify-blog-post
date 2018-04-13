@@ -40,3 +40,7 @@ Route::get('/logout', 'LoginController@logout');
 Route::get('/login', 'LoginController@create')->name('login');
 
 Route::post('/login', 'LoginController@store');
+
+Route::get('/users/{id}', 'UsersController@show')->name('users');
+
+Route::get('/posts/tag/{tag}', 'TagsController@index')->name('posts-tags');

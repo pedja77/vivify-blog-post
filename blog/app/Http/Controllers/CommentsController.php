@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comment;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CommentReceived;
+use App\Post;
 
 class CommentsController extends Controller
 {
@@ -44,6 +47,9 @@ class CommentsController extends Controller
         $this->validate($request, [
             'text' => 'required|min:15'
         ]);
+        $post = Post::find($request->id);
+
+        Mail::to($post->user)->send(new CommentReceived($post));
 
         return redirect()->route('single-post', ['id'=> $request->id]);
     }

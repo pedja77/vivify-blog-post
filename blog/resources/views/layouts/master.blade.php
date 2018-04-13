@@ -1,13 +1,18 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+    
         @include('partials.header')
-    </head>
+    
     <body>
         <div class="blog-header">
             <div class="container">
                 <h1 class="blog-title">Laravel blog</h1>
+                @if($message = session('message'))
+                <div class="alert alert-success">
+                    {{ $message }}
+                </div>
+                @endif
                 @if(auth()->check())
                     <div>{{  auth()->user()->name }}</div>
                     <a href="/logout">Logout</a>

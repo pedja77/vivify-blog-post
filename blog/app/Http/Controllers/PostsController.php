@@ -16,7 +16,7 @@ class PostsController extends Controller
     {
         //dd(auth()->user);
         // Prikaz svih elemenata resursa
-        $posts = Post::getPublished()->paginate(10);
+        $posts = Post::getPublished()->with('user')->paginate(10);
 
         return view('posts.index', compact(['posts']));
     }

@@ -9,7 +9,7 @@
 <div class="col-sm-12 blog-main">
         @foreach($posts as $post)
         
-                <a href="{{route('single-post', ['id' => $post->id])}}">{{ $post->title  }}</a>
+                <h3><a href="{{route('single-post', ['id' => $post->id])}}">{{ $post->title  }}</a></h3>
                 <p>by <i><a href="{{route('users', ['user_id'=> $post->user_id])}}">
                         {{  $post->user->name }}
                         </a></i></p>
@@ -27,6 +27,7 @@
        <a class="btn btn-outline-{{ $posts->hasMorePages() ? 'primary' : 'secondary'  }}"
              href="{{ $posts->nextPageUrl() }}">Next</a>
    </nav>    
+
    <!-- {{$posts->links()}} -->
 </div>  
 @endsection 
